@@ -1,13 +1,20 @@
 package com.heig.labo02
 
+import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.widget.TextView
 import com.heig.labo02.comm.CommunicationEventListener
 import com.heig.labo02.comm.SymComManager
 import org.junit.Test
 
+
 import org.junit.Assert.*
+import java.lang.ref.WeakReference
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+import kotlin.concurrent.thread
 
 
 /**
@@ -18,7 +25,7 @@ import org.junit.Assert.*
 class SymComManagerTest {
     @Test
     fun symComManagerTesting() {
-
+        /*
         val comManager = SymComManager();
 
         val handler = object:  Handler(Looper.getMainLooper()) {
@@ -39,5 +46,30 @@ class SymComManagerTest {
 
 
         assertEquals(4, 2 + 2)
+
+        */
+
+        val handler = object: Handler(Looper.getMainLooper()) {
+            override fun handleMessage(msg: Message) {
+                // console out message
+                print(msg.data.getString("TRUC"))
+            }
+        }
+
+        thread (start = true) {
+            val mcm = com.heig.labo02.comm.SymComManager(
+                object : CommunicationEventListener {
+                    override fun handleServerResponse(response: String): Boolean {
+                        val msg: Message = handler.obtainMessage()
+                        val b: Bundle ?= null
+                        b?.putString("FROM_SERVER", response)
+                        msg.data = b
+                        handler.sendMessage(msg)
+                        return true
+                    }
+                }
+            )
+            mcm.sendRequest( "http://sym.iict.ch/rest/txt", "toto")
+        }
     }
 }

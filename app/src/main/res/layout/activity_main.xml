@@ -6,6 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="384dp"
+        android:layout_height="213dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/main_activity_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Activity one" />
+
+    </RelativeLayout>
 
     <include layout="@layout/content_main" />
 

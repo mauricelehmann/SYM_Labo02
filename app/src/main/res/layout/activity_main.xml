@@ -20,6 +20,14 @@
             android:layout_height="wrap_content"
             android:text="Activity one" />
 
+        <Button
+            android:id="@+id/main_activity_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_activity_one"
+            android:layout_marginTop="50dp"
+            android:text="Activity two" />
+
     </RelativeLayout>
 
     <include layout="@layout/content_main" />

@@ -28,5 +28,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, ActivityOne::class.java)
             startActivity(intent)
         }
+
+        /**
+         * Activity one - Service de transmission asynchrone
+         */
+        activityOneButton = findViewById(R.id.main_activity_two)
+        activityOneButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ActivityTwo::class.java)
+            startActivity(intent)
+        }
     }
 }

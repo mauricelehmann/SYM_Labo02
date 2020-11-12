@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_anchorGravity="center"
-    tools:context=".ActivityOne">
+    tools:context=".ActivityTwo">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -16,17 +16,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/activity_one_button"
+            android:id="@+id/activity_two_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Envoi 1" />
+            android:text="Envoi 2" />
 
     </RelativeLayout>
 
     <include layout="@layout/content_main" />
 
     <TextView
-        android:id="@+id/activity_one_text"
+        android:id="@+id/activity_two_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-48dp"

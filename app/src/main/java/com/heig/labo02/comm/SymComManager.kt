@@ -1,6 +1,7 @@
 package com.heig.labo02.comm
 
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import java.lang.Exception
 import java.net.HttpURLConnection
@@ -19,6 +20,7 @@ class SymComManager(var communicationEventListener: CommunicationEventListener? 
                 setRequestProperty("Content-Type", "txt/plain")
                 requestMethod = "POST"
                 doOutput = true
+                outputStream.write(_request.toByteArray()) //Pas oublier d'envoyer le payload!
 
                 println("\nSent '$_request' request to URL : $url; Response Code : $responseCode")
 
@@ -27,7 +29,8 @@ class SymComManager(var communicationEventListener: CommunicationEventListener? 
                         response += line + '\n'
                     }
                 }
-
+                println(response)
+                Log.i(TAG, response)
                 communicationEventListener?.handleServerResponse(response)
             }
         } catch (e: Exception) {

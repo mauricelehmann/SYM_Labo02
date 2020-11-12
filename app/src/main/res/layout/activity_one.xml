@@ -20,6 +20,13 @@
             android:layout_height="wrap_content"
             android:text="Activity one" />
 
+        <TextView
+            android:id="@+id/activity_one_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="empty"
+        />
+
     </RelativeLayout>
 
     <include layout="@layout/content_main" />

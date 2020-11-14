@@ -1,24 +1,37 @@
 package com.heig.labo02.business
 
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText
 import com.google.gson.Gson
+
+class Phone(){
+    @JacksonXmlText
+    var number : String = ""
+    @JacksonXmlProperty(localName = "type", isAttribute = true)
+    var type : String = ""
+    constructor(_number : String , _type : String) : this() {
+        number = _number
+        type = _type
+    }
+}
 
 class Person() {
 
     var name: String = ""
     var firstname: String = ""
     var gender : String = ""
-    var phone : String = ""
+    lateinit var phone : Phone
 
-    constructor(_name : String , _firstname : String , _gender : String, _phone : String) : this() {
+    constructor(_name : String , _firstname : String , _gender : String, _phone : String, _type : String) : this() {
         name = _name
         firstname = _firstname
         gender = _gender
-        phone = _phone
+        phone = Phone(_phone, _type)
     }
 
     override fun toString(): String {
-        return "Name : $name\nFirstname : $firstname\nGender : $gender\nPhone : $phone\n"
+        return "Name : $name\nFirstname : $firstname\nGender : $gender\nPhone : ${phone.number}\n"
     }
 
     companion object {

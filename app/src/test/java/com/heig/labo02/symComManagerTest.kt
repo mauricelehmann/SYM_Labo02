@@ -1,11 +1,5 @@
 package com.heig.labo02
 
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.os.Message
-import android.util.Log
-import android.widget.TextView
 import com.google.gson.Gson
 import com.heig.labo02.business.Person
 import com.heig.labo02.comm.CommunicationEventListener
@@ -35,69 +29,14 @@ import kotlin.concurrent.thread
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-class SymComManagerTest {
+    class SymComManagerTest {
     @Test
     fun symComManagerTesting() {
 
         val comManager = SymComManager();
-        comManager.sendRequest( "http://sym.iict.ch/rest/txt", "toto", "txt/plain");
+        comManager.sendRequest("http://sym.iict.ch/rest/txt", "toto", "txt/plain");
 
         assertEquals(4, 2 + 2)
 
-    }
-
-    // TODO : Vrai tests mdr ou aucuns ! 
-
-    @Test
-    fun serialize() {
-        val p1 = Person("momo", 26)
-        println(p1.age)
-        println(p1.name)
-
-        val gson = Gson()
-        val personjson = gson.toJson(p1)
-        println(personjson)
-    }
-
-    @Test
-    fun deserialize() {
-        val p1 = "{\"name\":\"momo\",\"age\":26}"
-        val gson = Gson()
-        val personFromJson = gson.fromJson(p1, Person::class.java)
-        println(personFromJson.toString())
-    }
-
-    @Test
-    fun sendJson(){
-        val p1 = Person("momo", 26)
-        val gson = Gson()
-        val personjson = gson.toJson(p1)
-
-
-        val url = URL("http://sym.iict.ch/rest/json")
-        val request = personjson
-
-        try {
-            var response = ""
-
-            with(url.openConnection() as HttpURLConnection) {
-                setRequestProperty("Content-Type", "application/json")
-                requestMethod = "POST"
-                doOutput = true
-                outputStream.write(request.toByteArray()) //Pas oublier d'envoyer le payload!
-
-                println("\nSent '$request' request to URL : $url; Response Code : $responseCode")
-
-                inputStream.bufferedReader().use {
-                    it.lines().forEach {line ->
-                        response += line + '\n'
-                    }
-                }
-
-                val jsonResp = gson.fromJson(response, Person::class.java)
-            }
-        } catch (e: Exception) {
-            print(e.message)
-        }
     }
 }

@@ -26,7 +26,6 @@ class ActivityTwo: AppCompatActivity(), NetworkConnectivityListener {
 
             responseBox.text = "En attente de la réponse"
 
-
         }
     }
 

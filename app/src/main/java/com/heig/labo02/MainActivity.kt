@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityOneButton: Button
+    private lateinit var activityThreeButton: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +36,15 @@ class MainActivity : AppCompatActivity() {
         activityOneButton = findViewById(R.id.main_activity_two)
         activityOneButton.setOnClickListener {
             val intent = Intent(this@MainActivity, ActivityTwo::class.java)
+            startActivity(intent)
+        }
+
+        /**
+         * Activity one - Service de transmission asynchrone
+         */
+        activityThreeButton = findViewById(R.id.main_activity_three)
+        activityThreeButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ActivityThree::class.java)
             startActivity(intent)
         }
     }

@@ -10,14 +10,14 @@ import java.net.URL
 class SymComManager(var communicationEventListener: CommunicationEventListener? = null) {
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun sendRequest(_url: String, _request: String) {
+    fun sendRequest(_url: String, _request: String, _contentType : String) {
         try {
             val url = URL(_url)
 
             var response = ""
 
             with(url.openConnection() as HttpURLConnection) {
-                setRequestProperty("Content-Type", "txt/plain")
+                setRequestProperty("Content-Type", _contentType)
                 requestMethod = "POST"
                 doOutput = true
                 outputStream.write(_request.toByteArray()) //Pas oublier d'envoyer le payload!

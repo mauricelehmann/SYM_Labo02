@@ -46,6 +46,8 @@ class SymComManagerTest {
 
     }
 
+    // TODO : Vrai tests mdr ou aucuns ! 
+
     @Test
     fun serialize() {
         val p1 = Person("momo", 26)

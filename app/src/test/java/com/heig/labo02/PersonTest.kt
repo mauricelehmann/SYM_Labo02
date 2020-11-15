@@ -6,7 +6,7 @@ import org.junit.Test
 class PersonTest {
 
     private val jsonPerson = "{\"name\":\"maurice\",\"firstname\":\"lehmann\",\"gender\":\"homme\",\"phone\":\"079 151 62 52\"}"
-    private val XMLPerson = "<Person><name>maurice</name><firstname>lehmann</firstname><gender>homme</gender><phone type=\"home\">079 151 62 52</phone></Person>"
+    private val XMLPerson = "<person><name>maurice</name><firstname>lehmann</firstname><gender>homme</gender><phone type=\"home\">079 151 62 52</phone></person>"
     private val p = Person("maurice", "lehmann", "homme", "079 151 62 52", "home")
 
     @Test
@@ -28,7 +28,7 @@ class PersonTest {
     }
     @Test
     fun deserializePersonXML(){
-        val pFromXML = Person.fromXML(XMLPerson)
+        var pFromXML = Person.fromXML(XMLPerson)
         assert(p.toString() == pFromXML.toString())
     }
 }

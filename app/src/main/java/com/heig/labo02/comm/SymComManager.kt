@@ -29,7 +29,6 @@ class SymComManager(var communicationEventListener: CommunicationEventListener? 
                         response += line + '\n'
                     }
                 }
-                println(response)
                 Log.i(TAG, response)
                 communicationEventListener?.handleServerResponse(response)
             }

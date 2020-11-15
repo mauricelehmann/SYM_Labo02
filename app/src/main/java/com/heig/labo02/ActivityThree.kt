@@ -2,6 +2,7 @@ package com.heig.labo02
 
 import android.annotation.SuppressLint
 import android.os.*
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -81,15 +82,10 @@ class ActivityThree : AppCompatActivity() {
             var xmlPerson = Person.toXML(person)
             var payload = xmlHeader + xmlPerson + "</directory>"
 
-            println(payload)
-
             thread {
                 val mcm = SymComManager(
                     object : CommunicationEventListener {
                         override fun handleServerResponse(response: String): Boolean {
-
-                            // Deserialize the Person object as Json TODO : virer les fields qui servent a rien !
-                            // val responseAsPerson = Person.fromXML(response)
 
                             val msg: Message = handler.obtainMessage()
                             val b = Bundle()
@@ -101,17 +97,6 @@ class ActivityThree : AppCompatActivity() {
                     }
                 )
 
-
-                payload = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-                        "<!DOCTYPE directory SYSTEM \"http://sym.iict.ch/directory.dtd\">\n" +
-                        "<directory>\n" +
-                        "<person>\n" +
-                        "    <name>maurice</name>\n" +
-                        "    <firstname>lehmann</firstname>\n" +
-                        "    <gender>homme</gender>\n" +
-                        "    <phone type=\"home\">079 151 62 52</phone>\n" +
-                        "</person>\n" +
-                        "</directory>"
                 //Send a serialized Person object as Json
                 mcm.sendRequest( "http://sym.iict.ch/rest/xml", payload, "application/xml")
             }

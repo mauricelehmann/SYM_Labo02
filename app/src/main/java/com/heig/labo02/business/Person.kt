@@ -1,5 +1,8 @@
 package com.heig.labo02.business
 
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonPropertyOrder
+import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText
@@ -15,7 +18,7 @@ class Phone(){
         type = _type
     }
 }
-
+@JsonPropertyOrder(*["name", "firstname", "gender", "phone" ])
 class Person() {
 
     var name: String = ""
@@ -46,7 +49,9 @@ class Person() {
         }
         fun toXML(person : Person) : String {
             val xmlMapper = XmlMapper()
-            val ret = xmlMapper.writeValueAsString(person)
+            var ret = xmlMapper.writeValueAsString(person)
+            ret = ret.replace("<Person>", "<person>")
+            ret = ret.replace("</Person>", "</person>")
             return ret
         }
         fun fromXML(personXML : String) : Person {

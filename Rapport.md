@@ -81,4 +81,4 @@ Dans la query : `{"query" : "{allAuthors{id first_name last_name}}"}` un systèm
 ### 4.6 Transmission compressée
 > Quel gain de compression (en volume et en temps) peut-on constater en moyenne sur des fichiers texte (xml et json sont aussi du texte) en utilisant de la compression du point 3.4 ? Vous comparerez plusieurs tailles et types de contenu.
 
-TODO
+Nous n'avons pas pu réaliser cette partie à cause d'une erreur 500 du serveur. Mais de manière générale, plus le texte est long, plus le gain de temps en le compressant est grand, surtout avec une mauvaise connexion.

@@ -10,7 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityOneButton: Button
+    private lateinit var activityTwoButton: Button
     private lateinit var activityThreeButton: Button
+    private lateinit var activityFourButton: Button
+    private lateinit var activityFiveButton: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,20 +34,38 @@ class MainActivity : AppCompatActivity() {
         }
 
         /**
-         * Activity one - Service de transmission asynchrone
+         * Activity two - Service de transmission différé
          */
-        activityOneButton = findViewById(R.id.main_activity_two)
-        activityOneButton.setOnClickListener {
+        activityTwoButton = findViewById(R.id.main_activity_two)
+        activityTwoButton.setOnClickListener {
             val intent = Intent(this@MainActivity, ActivityTwo::class.java)
             startActivity(intent)
         }
 
         /**
-         * Activity one - Service de transmission asynchrone
+         * Activity three - Service de transmission XML et JSON
          */
         activityThreeButton = findViewById(R.id.main_activity_three)
         activityThreeButton.setOnClickListener {
             val intent = Intent(this@MainActivity, ActivityThree::class.java)
+            startActivity(intent)
+        }
+
+        /**
+         * Activity four - Service de transmission GraphQl
+         */
+        activityFourButton = findViewById(R.id.main_activity_four)
+        activityFourButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ActivityFour::class.java)
+            startActivity(intent)
+        }
+
+        /**
+         * Activity five - Service de transmission compressé
+         */
+        activityFiveButton = findViewById(R.id.main_activity_five)
+        activityFiveButton.setOnClickListener {
+            val intent = Intent(this@MainActivity, ActivityFive::class.java)
             startActivity(intent)
         }
     }

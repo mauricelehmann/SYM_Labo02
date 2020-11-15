@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_anchorGravity="center"
-    tools:context=".ActivityOne">
+    tools:context=".ActivityFour">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -17,17 +17,17 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/activity_one_button"
+            android:id="@+id/activity_four_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Envoi Asynchrone" />
+            android:text="Envoi GraphQl" />
 
     </RelativeLayout>
 
     <include layout="@layout/content_main" />
 
     <TextView
-        android:id="@+id/activity_one_text"
+        android:id="@+id/activity_four_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="-48dp"

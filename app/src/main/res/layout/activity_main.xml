@@ -8,8 +8,8 @@
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="384dp"
-        android:layout_height="213dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,7 +18,7 @@
             android:id="@+id/main_activity_one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activity one" />
+            android:text="Activité asynchrone" />
 
         <Button
             android:id="@+id/main_activity_two"
@@ -26,15 +26,31 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/main_activity_one"
             android:layout_marginTop="50dp"
-            android:text="Activity two" />
+            android:text="Activité Différée" />
 
         <Button
             android:id="@+id/main_activity_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/main_activity_one"
-            android:layout_marginTop="100dp"
-            android:text="Activity three" />
+            android:layout_below="@+id/main_activity_two"
+            android:layout_marginTop="50dp"
+            android:text="Activité XML et JSOM" />
+
+        <Button
+            android:id="@+id/main_activity_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_activity_three"
+            android:layout_marginTop="50dp"
+            android:text="Activité GraphQl" />
+
+        <Button
+            android:id="@+id/main_activity_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/main_activity_four"
+            android:layout_marginTop="50dp"
+            android:text="Activité Compressée" />
 
     </RelativeLayout>
 

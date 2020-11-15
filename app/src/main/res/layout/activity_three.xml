@@ -1,44 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    app:layout_anchorGravity="center"
+    tools:context=".ActivityThree">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
-        android:layout_width="384dp"
-        android:layout_height="213dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/main_activity_one"
+            android:id="@+id/sendJSONButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activity one" />
-
+            android:text="Envoi JSON" />
         <Button
-            android:id="@+id/main_activity_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/main_activity_one"
+            android:id="@+id/sendXMLButton"
             android:layout_marginTop="50dp"
-            android:text="Activity two" />
-
-        <Button
-            android:id="@+id/main_activity_three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/main_activity_one"
-            android:layout_marginTop="100dp"
-            android:text="Activity three" />
+            android:text="Envoi XML" />
 
     </RelativeLayout>
 
     <include layout="@layout/content_main" />
+
+    <TextView
+        android:id="@+id/activity_three_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-48dp"
+        android:text="empty"
+        app:layout_anchor="@+id/relativeLayout"
+        app:layout_anchorGravity="center" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

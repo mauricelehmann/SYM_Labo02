@@ -14,6 +14,7 @@ import kotlin.concurrent.thread
 class ActivityOne : AppCompatActivity() {
 
     private lateinit var activityOneButton: Button
+    private val SRV_TAG = "SERVER_MESSAGE"
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.N)
@@ -31,7 +32,7 @@ class ActivityOne : AppCompatActivity() {
             override fun handleMessage(msg: Message) {
                 Toast.makeText(applicationContext, "is dis answer ?", Toast.LENGTH_SHORT)
                     .show()
-                responseBox.text = msg.data.getString("FROM_SERVER")
+                responseBox.text = msg.data.getString(SRV_TAG)
             }
         }
 
@@ -45,15 +46,15 @@ class ActivityOne : AppCompatActivity() {
                     object : CommunicationEventListener {
                         override fun handleServerResponse(response: String): Boolean {
                             val msg: Message = handler.obtainMessage()
-                            val b = Bundle()
-                            b.putString("FROM_SERVER", response)
-                            msg.data = b
+                            val bundle = Bundle()
+                            bundle.putString(SRV_TAG, response)
+                            msg.data = bundle
                             handler.sendMessage(msg)
                             return true
                         }
                     }
                 )
-                mcm.sendRequest( "http://sym.iict.ch/rest/txt", "i wuv kt", "txt/plain")
+                mcm.sendRequest( "http://sym.iict.ch/rest/txt", "i wuv kt", "txt/plain", false)
             }
         }
     }

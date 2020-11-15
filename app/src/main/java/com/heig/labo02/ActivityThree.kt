@@ -17,6 +17,7 @@ class ActivityThree : AppCompatActivity() {
 
     private lateinit var sendJSONObjectButton: Button
     private lateinit var sendXMLObjectButton: Button
+    private val SRV_TAG = "SERVER_MESSAGE"
 
     private val person = Person("maurice", "lehmann", "homme", "079 151 62 52", "home")
 
@@ -37,7 +38,7 @@ class ActivityThree : AppCompatActivity() {
             override fun handleMessage(msg: Message) {
                 Toast.makeText(applicationContext, "is dis answer ?", Toast.LENGTH_SHORT)
                     .show()
-                responseBox.text = msg.data.getString("FROM_SERVER")
+                responseBox.text = msg.data.getString(SRV_TAG)
             }
         }
 
@@ -56,16 +57,16 @@ class ActivityThree : AppCompatActivity() {
                             val responseAsPerson = Person.fromJson(response)
 
                             val msg: Message = handler.obtainMessage()
-                            val b = Bundle()
-                            b.putString("FROM_SERVER", responseAsPerson.toString())
-                            msg.data = b
+                            val bundle = Bundle()
+                            bundle.putString(SRV_TAG, responseAsPerson.toString())
+                            msg.data = bundle
                             handler.sendMessage(msg)
                             return true
                         }
                     }
                 )
                 //Send a serialized Person object as Json
-                mcm.sendRequest( "http://sym.iict.ch/rest/json", Person.toJson(person), "application/json")
+                mcm.sendRequest( "http://sym.iict.ch/rest/json", Person.toJson(person), "application/json", false)
             }
         }
 
@@ -89,7 +90,7 @@ class ActivityThree : AppCompatActivity() {
 
                             val msg: Message = handler.obtainMessage()
                             val b = Bundle()
-                            b.putString("FROM_SERVER", response)
+                            b.putString(SRV_TAG, response)
                             msg.data = b
                             handler.sendMessage(msg)
                             return true
@@ -98,7 +99,7 @@ class ActivityThree : AppCompatActivity() {
                 )
 
                 //Send a serialized Person object as Json
-                mcm.sendRequest( "http://sym.iict.ch/rest/xml", payload, "application/xml")
+                mcm.sendRequest( "http://sym.iict.ch/rest/xml", payload, "application/xml", false)
             }
         }
     }

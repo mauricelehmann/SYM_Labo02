@@ -1,18 +1,27 @@
 package com.heig.labo02
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.heig.labo02.comm.network.*
+import com.heig.labo02.comm.CommunicationEventListener
+import com.heig.labo02.comm.SymComManager
+import com.heig.labo02.comm.network.NetworkMonitorUtil
+import kotlin.concurrent.thread
 
-class ActivityTwo: AppCompatActivity(), NetworkConnectivityListener {
+
+class ActivityTwo: AppCompatActivity() {
     private lateinit var activityTwoButton: Button
-    private var previousState = true
     private lateinit var responseBox: TextView
 
+    private var sendThread = Thread()
+    private var counter = 0
+    private val networkMonitor = NetworkMonitorUtil(this)
+
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,24 +30,64 @@ class ActivityTwo: AppCompatActivity(), NetworkConnectivityListener {
         responseBox = findViewById(R.id.activity_two_text)
         activityTwoButton = findViewById(R.id.activity_two_button)
 
-        activityTwoButton.setOnClickListener {
-            Toast.makeText(applicationContext, "request is coming", Toast.LENGTH_SHORT).show()
 
-            responseBox.text = "En attente de la réponse"
 
-        }
-    }
 
-    override fun networkConnectivityChanged(event: Event) {
-        when (event) {
-            is Event.ConnectivityEvent -> {
-                if (event.isConnected) {
-                    showSnackBar(responseBox, "The network is back !")
-                } else {
-                    showSnackBar(responseBox, "There is no more network")
+        sendThread = thread (start = false) {
+            while (true) {
+                if (networkMonitor.isAvailable) {
+                    val mcm = SymComManager(
+                        object : CommunicationEventListener {
+                            override fun handleServerResponse(response: String): Boolean {
+                                println(response)
+                                return true
+                            }
+                        }
+                    )
+
+                    for (message in waitingList) {
+                        println("sending **$message**")
+                        mcm.sendRequest(
+                            "http://sym.iict.ch/rest/txt",
+                            message,
+                            "txt/plain"
+                        )
+                    }
+
+                    waitingList.clear()
+
+                    break
+                }
+
+                try {
+                    Thread.sleep(3000)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
                 }
             }
         }
+
+        activityTwoButton.setOnClickListener {
+            counter++
+
+            try {
+                if (!sendThread.isAlive) sendThread.start()
+            } catch (e: IllegalThreadStateException) {
+                e.printStackTrace()
+            }
+
+            waitingList.add("me want to go $counter !")
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        networkMonitor.register()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        networkMonitor.unregister()
     }
 
     companion object {

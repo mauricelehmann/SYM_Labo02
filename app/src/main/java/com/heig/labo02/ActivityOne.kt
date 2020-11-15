@@ -54,7 +54,10 @@ class ActivityOne : AppCompatActivity() {
                         }
                     }
                 )
-                mcm.sendRequest( "http://sym.iict.ch/rest/txt", "i wuv kt", "txt/plain", false)
+                mcm.sendRequest( "http://sym.iict.ch/rest/txt",
+                    "i wuv kt",
+                    "txt/plain",
+                    false)
             }
         }
     }

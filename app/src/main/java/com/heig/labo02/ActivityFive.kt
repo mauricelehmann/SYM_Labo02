@@ -1,3 +1,11 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  ActivityFive.kt
+ Auteur(s)   :  Maurice Lehmann
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02
 
 import android.os.*
@@ -15,11 +23,15 @@ import kotlin.concurrent.thread
  * Compression - Sending a compress JSON object
  */
 class ActivityFive: AppCompatActivity() {
-    private lateinit var activityTwoButton: Button
+    private lateinit var activityFiveButton: Button
     private lateinit var responseBox: TextView
     private val SRV_TAG = "SERVER_MESSAGE"
 
-    private val person = Person("maurice", "lehmann", "homme", "079 151 62 52", "home")
+    private val person = Person("maurice",
+        "lehmann",
+        "homme",
+        "079 151 62 52",
+        "home")
 
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +39,7 @@ class ActivityFive: AppCompatActivity() {
         setContentView(R.layout.activity_five)
 
         responseBox = findViewById(R.id.activity_five_text)
-        activityTwoButton = findViewById(R.id.activity_five_button)
+        activityFiveButton = findViewById(R.id.activity_five_button)
 
 
         val handler = object : Handler(Looper.getMainLooper()) {
@@ -38,7 +50,7 @@ class ActivityFive: AppCompatActivity() {
             }
         }
 
-        activityTwoButton.setOnClickListener {
+        activityFiveButton.setOnClickListener {
             Toast.makeText(applicationContext, "request is coming", Toast.LENGTH_SHORT).show()
             responseBox.text = "En attente de la réponse"
 

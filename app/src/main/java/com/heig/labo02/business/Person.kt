@@ -1,8 +1,14 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  Person.kt
+ Auteur(s)   :  Maurice Lehmann
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02.business
 
-import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
-import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText
@@ -26,7 +32,8 @@ class Person() {
     var gender : String = ""
     lateinit var phone : Phone
 
-    constructor(_name : String , _firstname : String , _gender : String, _phone : String, _type : String) : this() {
+    constructor(_name : String , _firstname : String , _gender : String,
+                _phone : String, _type : String) : this() {
         name = _name
         firstname = _firstname
         gender = _gender

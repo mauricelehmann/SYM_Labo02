@@ -1,3 +1,13 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  NetworkMonitorUtil.kt
+ Auteur(s)   :  Soulaymane Lamrani
+ Remarque    : Légèrement remanié à partir de
+               https://github.com/johncodeos-blog/CheckInternetAndroidExample
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02.comm.network
 
 import android.content.BroadcastReceiver

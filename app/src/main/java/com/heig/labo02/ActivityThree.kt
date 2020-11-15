@@ -1,8 +1,15 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  ActivityThree.kt
+ Auteur(s)   :  Maurice Lehmann
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02
 
 import android.annotation.SuppressLint
 import android.os.*
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -19,7 +26,11 @@ class ActivityThree : AppCompatActivity() {
     private lateinit var sendXMLObjectButton: Button
     private val SRV_TAG = "SERVER_MESSAGE"
 
-    private val person = Person("maurice", "lehmann", "homme", "079 151 62 52", "home")
+    private val person = Person("maurice",
+        "lehmann",
+        "homme",
+        "079 151 62 52",
+        "home")
 
     @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.N)
@@ -66,7 +77,10 @@ class ActivityThree : AppCompatActivity() {
                     }
                 )
                 //Send a serialized Person object as Json
-                mcm.sendRequest( "http://sym.iict.ch/rest/json", Person.toJson(person), "application/json", false)
+                mcm.sendRequest( "http://sym.iict.ch/rest/json",
+                    Person.toJson(person),
+                    "application/json",
+                    false)
             }
         }
 
@@ -81,7 +95,7 @@ class ActivityThree : AppCompatActivity() {
                     "<!DOCTYPE directory SYSTEM \"http://sym.iict.ch/directory.dtd\">\n" +
                     "<directory>"
             var xmlPerson = Person.toXML(person)
-            var payload = xmlHeader + xmlPerson + "</directory>"
+            var payload = "$xmlHeader$xmlPerson</directory>"
 
             thread {
                 val mcm = SymComManager(
@@ -99,7 +113,10 @@ class ActivityThree : AppCompatActivity() {
                 )
 
                 //Send a serialized Person object as Json
-                mcm.sendRequest( "http://sym.iict.ch/rest/xml", payload, "application/xml", false)
+                mcm.sendRequest( "http://sym.iict.ch/rest/xml",
+                    payload,
+                    "application/xml",
+                    false)
             }
         }
     }

@@ -1,3 +1,11 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  ActivityFour.kt
+ Auteur(s)   :  Maurice Lehmann
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02
 
 import android.os.*
@@ -16,7 +24,7 @@ import kotlin.concurrent.thread
  * Send GraphQL queries
  */
 class ActivityFour: AppCompatActivity() {
-    private lateinit var activityTwoButton: Button
+    private lateinit var activityFourButton: Button
     private lateinit var responseBox: TextView
     private lateinit var spinner: Spinner
 
@@ -30,7 +38,7 @@ class ActivityFour: AppCompatActivity() {
         setContentView(R.layout.activity_four)
 
         responseBox = findViewById(R.id.activity_four_text)
-        activityTwoButton = findViewById(R.id.activity_four_button)
+        activityFourButton = findViewById(R.id.activity_four_button)
         spinner = findViewById(R.id.spinner2)
 
         loadAuthor()
@@ -49,8 +57,10 @@ class ActivityFour: AppCompatActivity() {
                 // write code to perform some action
             }
         }
-        activityTwoButton.setOnClickListener {
-                Toast.makeText(applicationContext, "request is coming", Toast.LENGTH_SHORT).show()
+        activityFourButton.setOnClickListener {
+                Toast.makeText(applicationContext,
+                    "request is coming",
+                    Toast.LENGTH_SHORT).show()
                 responseBox.text = "En attente de la réponse"
 
             }
@@ -74,7 +84,6 @@ class ActivityFour: AppCompatActivity() {
                 var authors: Array<Author> = gson.fromJson(data, Array<Author>::class.java)
 
                 addAuthorsToSpinner(authors)
-
             }
         }
         thread {
@@ -92,7 +101,10 @@ class ActivityFour: AppCompatActivity() {
             )
 
             //Send a serialized Person object as Json
-            mcm.sendRequest( "http://sym.iict.ch/api/graphql", query, "application/json", false)
+            mcm.sendRequest( "http://sym.iict.ch/api/graphql",
+                query,
+                "application/json",
+                false)
         }
     }
 
@@ -124,7 +136,10 @@ class ActivityFour: AppCompatActivity() {
             )
 
             //Send a serialized Person object as Json
-            mcm.sendRequest( "http://sym.iict.ch/api/graphql", query, "application/json", false)
+            mcm.sendRequest( "http://sym.iict.ch/api/graphql",
+                query,
+                "application/json",
+                false)
         }
     }
 

@@ -1,3 +1,11 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  ActivityTwo.kt
+ Auteur(s)   :  Soulaymane Lamrani
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02
 
 import android.annotation.SuppressLint
@@ -30,9 +38,6 @@ class ActivityTwo: AppCompatActivity() {
         responseBox = findViewById(R.id.activity_two_text)
         activityTwoButton = findViewById(R.id.activity_two_button)
 
-
-
-
         sendThread = thread (start = false) {
             while (true) {
                 if (networkMonitor.isAvailable) {
@@ -50,7 +55,8 @@ class ActivityTwo: AppCompatActivity() {
                         mcm.sendRequest(
                             "http://sym.iict.ch/rest/txt",
                             message,
-                            "txt/plain"
+                            "txt/plain",
+                            false
                         )
                     }
 
@@ -70,6 +76,9 @@ class ActivityTwo: AppCompatActivity() {
         activityTwoButton.setOnClickListener {
             counter++
 
+            // Problem : when we  press the send button more than once, there is an
+            // IllegalThreadStateException due to the sendThread.start()
+            // Investigation is still occuring
             try {
                 if (!sendThread.isAlive) sendThread.start()
             } catch (e: IllegalThreadStateException) {

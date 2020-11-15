@@ -1,3 +1,11 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  MainActivity.kt
+ Auteur(s)   :  Maurice Lehmann
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02
 
 import android.content.Intent

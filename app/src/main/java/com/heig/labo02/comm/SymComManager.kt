@@ -1,3 +1,11 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire :  02
+ Fichier     :  SymComManager.kt
+ Auteur(s)   :  Maurice Lehmann
+ -----------------------------------------------------------------------------------
+ */
+
 package com.heig.labo02.comm
 
 import android.os.Build
@@ -61,7 +69,7 @@ class SymComManager(var communicationEventListener: CommunicationEventListener? 
                     }
                 }
             }
-            println("RESPONSE : " + response)
+            println("RESPONSE : $response")
             Log.i(TAG, response)
             communicationEventListener?.handleServerResponse(response)
 

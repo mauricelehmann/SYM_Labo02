@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
          */
         activityFourButton = findViewById(R.id.main_activity_four)
         activityFourButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, ActivityThree::class.java)
+            val intent = Intent(this@MainActivity, ActivityFour::class.java)
             startActivity(intent)
         }
 
@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
          */
         activityFiveButton = findViewById(R.id.main_activity_five)
         activityFiveButton.setOnClickListener {
-            val intent = Intent(this@MainActivity, ActivityThree::class.java)
+            val intent = Intent(this@MainActivity, ActivityFive::class.java)
             startActivity(intent)
         }
     }

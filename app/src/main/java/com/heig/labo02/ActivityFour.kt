@@ -6,6 +6,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+/**
+ * Send GraphQL queries
+ */
 class ActivityFour: AppCompatActivity() {
     private lateinit var activityTwoButton: Button
     private lateinit var responseBox: TextView

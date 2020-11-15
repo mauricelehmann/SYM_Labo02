@@ -1,27 +1,18 @@
 package com.heig.labo02
 
-import com.google.gson.Gson
+
 import com.heig.labo02.business.Person
-import com.heig.labo02.comm.CommunicationEventListener
 import com.heig.labo02.comm.SymComManager
-import org.json.JSONStringer
-import org.json.JSONTokener
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-
-import org.junit.Assert.*
-import java.io.BufferedReader
-import java.io.DataInputStream
-import java.io.DataOutputStream
-import java.io.InputStreamReader
-import java.lang.Exception
-import java.lang.ref.WeakReference
+import java.io.*
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.charset.StandardCharsets
-import java.util.concurrent.Executor
-import java.util.concurrent.Executors
-import kotlin.concurrent.thread
+import java.util.zip.Deflater
+import java.util.zip.DeflaterOutputStream
+import java.util.zip.Inflater
+import java.util.zip.InflaterInputStream
 
 
 /**
@@ -29,14 +20,20 @@ import kotlin.concurrent.thread
  *
  * See [testing documentation](http://d.android.com/tools/testing).
  */
-    class SymComManagerTest {
+class SymComManagerTest {
+
+
     @Test
     fun symComManagerTesting() {
 
         val comManager = SymComManager();
-        comManager.sendRequest("http://sym.iict.ch/rest/txt", "toto", "txt/plain");
+        comManager.sendRequest("http://sym.iict.ch/rest/txt", "toto", "txt/plain", false);
 
         assertEquals(4, 2 + 2)
+
+    }
+    @Test
+    fun sendCompressData(){
 
     }
 }

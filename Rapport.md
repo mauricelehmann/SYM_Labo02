@@ -6,34 +6,29 @@ TODO La meilleure manière de le faire est ...
 
 ## 4 Questions
 ### 4.1 Traitement des erreurs 
-#### Q:
 >Les classes et interfaces SymComManager et CommunicationEventListener, utilisées au point 3.1, restent très >>(et certainement trop) simples pour être utilisables dans une vraie application: que se passe-t-il si le serveur n’est pas joignable dans l’immédiat ou s’il retourne un code HTTP d’erreur? Veuillez proposer une nouvelle version, mieux adaptée,de ces deux classes / interfaces pour vous aider à illustrer votre réponse.
 
-#### R:
 TODO
 
 ### 4.2 Authentification
-#### Q:
 >Si une authentification par le serveur est requise, peut-on utiliser un protocole asynchrone ? Quelles seraient les restrictions ? Peut-on utiliser une transmission différée ?
 
-#### R:
-TODO
 
+TODO
+Oui si l'application, qui fait la requête en question, stocke les credentials pour pouvoir s'identifier.
+Par exemple de nos jours JWT (Json Web Token) est un moyen populaire pour pouvoir s'identifier.
 
 
 
 ### 4.3 Threads concurrents
-#### Q:
 >Lors  de  l'utilisation  de  protocoles  asynchrones,  c'est  généralement  deux  threads  différents  qui  se répartissent les différentes étapes (préparation, envoi, réception et traitement des données) de la communication. Quels problèmes cela peut-il poser ?
 
-#### R:
 TODO
 
 
 
 
 ### 4.4 Écriture différée
-#### Q:
 >Lorsque l'on implémente l'écriture différée, il arrive que l'on ait soudainement plusieurs transmissions en  attente  qui  deviennent  possibles  simultanément.  Comment  implémenter  proprement  cette situation ? Voici deux possibilités:
 >
 >- Effectuer une connexion par transmission différée
@@ -41,28 +36,30 @@ TODO
 >
 >Comparer les deux techniques (et éventuellement d'autres que vous pourriez imaginer) et discuter des avantages et inconvénients respectifs.
 
-#### R:
 TODO
 
 
 
 
 ### 4.5 Transmission d’objets
-#### Q:
->a. Quel  inconvénient  y  a-t-il  à  utiliser  une  infrastructure de  type  REST/JSON  n'offrant  aucun service de validation (DTD, XML-schéma, WSDL) par rapport à une infrastructure comme SOAP offrant ces possibilités ? Est-ce qu’il y aen revanche des avantages que vous pouvez citer ?
->
->b. L’utilisation  d’un  mécanisme  comme Protocol   Buffers5est-elle  compatible  avec  une architecture basée sur HTTP? Veuillez discuter des éventuelles avantages ou limitations par rapport à un protocole basé sur JSON ou XML?
->
+>a. Quel  inconvénient  y  a-t-il  à  utiliser  une  infrastructure de  type  REST/JSON  n'offrant  aucun service de validation (DTD, XML-schéma, WSDL) par rapport à une infrastructure comme SOAP offrant ces possibilités ? Est-ce qu’il y a en revanche des avantages que vous pouvez citer ?
+
+On peut soumettre des éléments qui ne respectent pas la forme acceptée par le serveur avec du JSON. La détéction et géstion d'erreurs devient plus complexe au niveau du serveur. Ce n'est pas le cas avec les options qui offrent la validation, car chaque erreur est immédiatement détectée au tout début.
+
+Le seul avantage de JSON reste qu'il est peu verbeux, c'est à dire qu'il est de plus petite taille pour une requête donnée en comparaison des autres.
+
+
+>b. L’utilisation d’un mécanisme comme Protocol Buffers est-elle compatible avec une architecture basée sur HTTP? Veuillez discuter des éventuelles avantages ou limitations par rapport à un protocole basé sur JSON ou XML?
+
+TODO
+
 >c. Par rapport à l’API GraphQL mise à disposition pour ce laboratoire. Avez-vous constaté des points qui pourraient être améliorés pour une utilisation mobile?Veuillez en discuter, vous pouvez élargir votre réflexion à une problématique plus large que la manipulation effectuée.
 
-#### R:
 TODO
 
 
 
 ### 4.6 Transmission compressée
-#### Q:
->Quel gain de compression(en volume et en temps)peut-on constater en moyenne sur des fichiers texte (xml et json sont aussi du texte) en utilisant de la compression du point 3.4 ?Vous comparerez plusieurs tailles et types de contenu.
+>Quel gain de compression(en volume et en temps)peut-on constater en moyenne sur des fichiers texte (xml et json sont aussi du texte) en utilisant de la compression du point 3.4 ? Vous comparerez plusieurs tailles et types de contenu.
 
-#### R:
 TODO

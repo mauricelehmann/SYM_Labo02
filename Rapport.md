@@ -13,10 +13,10 @@ TODO
 ### 4.2 Authentification
 >Si une authentification par le serveur est requise, peut-on utiliser un protocole asynchrone ? Quelles seraient les restrictions ? Peut-on utiliser une transmission différée ?
 
-
-TODO
 Oui si l'application, qui fait la requête en question, stocke les credentials pour pouvoir s'identifier.
 Par exemple de nos jours JWT (Json Web Token) est un moyen populaire pour pouvoir s'identifier.
+
+Par contre si l'utilisateur doit s'identifier à chaque fois alors c'est non la réponse.
 
 
 

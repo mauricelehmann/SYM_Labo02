@@ -5,15 +5,6 @@ import com.heig.labo02.business.Person
 import com.heig.labo02.comm.SymComManager
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import java.io.*
-import java.net.HttpURLConnection
-import java.net.URL
-import java.nio.charset.StandardCharsets
-import java.util.zip.Deflater
-import java.util.zip.DeflaterOutputStream
-import java.util.zip.Inflater
-import java.util.zip.InflaterInputStream
-
 
 /**
  * Example local unit test, which will execute on the development machine (host).
